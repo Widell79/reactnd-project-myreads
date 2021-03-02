@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Book from "./Book";
 
-const BookShelf = ({ books }) => {
+const BookShelf = ({ books, updateShelf }) => {
   return (
     <div className="bookshelf-books">
       <div className="list-books-content">
@@ -18,6 +18,9 @@ const BookShelf = ({ books }) => {
                 bookTitle={book.title}
                 bookAuthor={book.authors}
                 key={book.id}
+                updateShelf={updateShelf}
+                id={book.id}
+                shelf={book.shelf}
               />
             ))}
         </ol>
@@ -35,6 +38,9 @@ const BookShelf = ({ books }) => {
                 bookTitle={book.title}
                 bookAuthor={book.authors}
                 key={book.id}
+                updateShelf={updateShelf}
+                id={book.id}
+                shelf={book.shelf}
               />
             ))}
         </ol>
@@ -52,6 +58,9 @@ const BookShelf = ({ books }) => {
                 bookTitle={book.title}
                 bookAuthor={book.authors}
                 key={book.id}
+                updateShelf={updateShelf}
+                id={book.id}
+                shelf={book.shelf}
               />
             ))}
         </ol>
