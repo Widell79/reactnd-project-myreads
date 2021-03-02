@@ -1,6 +1,6 @@
 import React from "react";
 
-const Book = (props) => {
+const Book = ({ image, bookTitle, bookAuthor }) => {
   return (
     <li>
       <div className="book">
@@ -10,8 +10,7 @@ const Book = (props) => {
             style={{
               width: 128,
               height: 188,
-              backgroundImage:
-                'url("http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api")',
+              backgroundImage: `url(${image["thumbnail"]})`,
             }}
           />
           <div className="book-shelf-changer">
@@ -26,8 +25,8 @@ const Book = (props) => {
             </select>
           </div>
         </div>
-        <div className="book-title">Ender's Game</div>
-        <div className="book-authors">Orson Scott Card</div>
+        <div className="book-title">{bookTitle}</div>
+        <div className="book-authors">{bookAuthor}</div>
       </div>
     </li>
   );

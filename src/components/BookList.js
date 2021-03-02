@@ -1,15 +1,22 @@
 import React from "react";
 import Book from "./Book";
 
-const BookList = (props) => {
+const BookList = ({ bookshelfTitle, books }) => {
   return (
     <div className="list-books-content">
       <div>
         <div className="bookshelf">
-          <h2 className="bookshelf-title">{props.bookshelfTitle}</h2>
+          <h2 className="bookshelf-title">{bookshelfTitle}</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
-              <Book />
+              {books.map((book) => (
+                <Book
+                  image={book.imageLinks}
+                  bookTitle={book.title}
+                  bookAuthor={book.authors}
+                  key={book.id}
+                />
+              ))}
             </ol>
           </div>
         </div>
