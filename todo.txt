@@ -1,13 +1,13 @@
-Install react-router-dom
-import and use BrowserRouter
+Install react-router-dom -done
+import and use BrowserRouter - done
 
 Components:
-Books - done
+BookShelf - done
 Book - done
 
 State:
 API fectch books in APP - done
-Change bookshelf
+Change bookshelf via API - done
 
 Search:
 implement

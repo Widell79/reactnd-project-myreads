@@ -18,7 +18,7 @@ const Book = ({ image, bookTitle, bookAuthor, updateShelf, id }) => {
             }}
           />
           <div onChange={handleUpdate} className="book-shelf-changer">
-            <select>
+            <select defaultValue="move">
               <option value="move" disabled>
                 Move to...
               </option>
