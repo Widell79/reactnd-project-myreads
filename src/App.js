@@ -1,5 +1,7 @@
 import React from "react";
-import BookList from "./components/BookList";
+import { Route } from "react-router-dom";
+import BookShelf from "./components/BookShelf";
+
 import * as BooksAPI from "./utils/BooksAPI";
 import "./App.css";
 
@@ -23,12 +25,12 @@ class BooksApp extends React.Component {
           <div className="list-books-title">
             <h1>MyReads</h1>
           </div>
-          <BookList
-            bookshelfTitle="Currently Reading"
-            books={this.state.books}
+
+          <Route
+            exact
+            path="/"
+            render={() => <BookShelf books={this.state.books} />}
           />
-          <BookList bookshelfTitle="Want to Read" books={this.state.books} />
-          <BookList bookshelfTitle="Read" books={this.state.books} />
         </div>
       </div>
     );
