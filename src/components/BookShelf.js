@@ -11,29 +11,33 @@ const BookShelf = ({ books, updateShelf }) => {
   };
 
   return (
-    <div className="bookshelf-books">
-      {bookShelfs.map((shelf) => (
-        <div key={shelf} className="list-books-content">
-          <h2>{shelf}</h2>
-          <ol className="books-grid">
-            {books
-              .filter(function(book) {
-                return book.shelf === convertShelf[shelf];
-              })
-              .map((book) => (
-                <Book
-                  image={book.imageLinks.thumbnail}
-                  bookTitle={book.title}
-                  bookAuthor={book.authors}
-                  key={book.id}
-                  updateShelf={updateShelf}
-                  id={book.id}
-                  shelf={book.shelf}
-                />
-              ))}
-          </ol>
-        </div>
-      ))}
+    <div className="list-books-content">
+      <div>
+        {bookShelfs.map((shelf) => (
+          <div key={shelf} className="bookshelf">
+            <h2 className="bookshelf-title">{shelf}</h2>
+            <div className="bookshelf-books">
+              <ol className="books-grid">
+                {books
+                  .filter(function(book) {
+                    return book.shelf === convertShelf[shelf];
+                  })
+                  .map((book) => (
+                    <Book
+                      image={book.imageLinks.thumbnail}
+                      bookTitle={book.title}
+                      bookAuthor={book.authors}
+                      key={book.id}
+                      updateShelf={updateShelf}
+                      id={book.id}
+                      shelf={book.shelf}
+                    />
+                  ))}
+              </ol>
+            </div>
+          </div>
+        ))}
+      </div>
 
       <div className="open-search">
         <Link to="/search">
