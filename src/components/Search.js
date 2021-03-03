@@ -7,7 +7,7 @@ const Search = ({ currentBooks, searchedBooks, searchBook, updateShelf }) => {
   const updateSearch = (e) => {
     const value = e.target.value;
     // this.setState({ search: value });
-    if (value && value.length > 0) searchBook(value);
+    searchBook(value);
   };
 
   return (
