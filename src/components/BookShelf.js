@@ -22,7 +22,7 @@ const BookShelf = ({ books, updateShelf }) => {
               })
               .map((book) => (
                 <Book
-                  image={book.imageLinks}
+                  image={book.imageLinks.thumbnail}
                   bookTitle={book.title}
                   bookAuthor={book.authors}
                   key={book.id}

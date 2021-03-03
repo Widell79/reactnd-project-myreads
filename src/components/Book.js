@@ -15,11 +15,11 @@ const Book = ({ image, bookTitle, bookAuthor, updateShelf, id, shelf }) => {
             style={{
               width: 128,
               height: 188,
-              backgroundImage: `url(${image["thumbnail"]})`,
+              backgroundImage: `url(${image})`,
             }}
           />
           <div onChange={handleUpdate} className="book-shelf-changer">
-            <select defaultValue={shelf}>
+            <select defaultValue={shelf === undefined ? "none" : shelf}>
               <option value="move" disabled>
                 Move to...
               </option>

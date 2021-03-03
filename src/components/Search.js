@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Search = ({ books }) => {
+import Book from "./Book";
+
+const Search = ({ currentBooks, searchedBooks, searchBook, updateShelf }) => {
+  const updateSearch = (e) => {
+    const value = e.target.value;
+    // this.setState({ search: value });
+    if (value && value.length > 0) searchBook(value);
+  };
+
   return (
     <div className="bookshelf-books">
       <div className="search-books">
@@ -18,11 +26,31 @@ const Search = ({ books }) => {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-            <input type="text" placeholder="Search by title or author" />
+            <input
+              onChange={updateSearch}
+              type="text"
+              placeholder="Search by title or author"
+            />
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid" />
+          <ol className="books-grid">
+            {searchedBooks.map((book, key) => {
+              const bookOnShelf = currentBooks.find(({ id }) => id === book.id);
+              const shelf = bookOnShelf ? bookOnShelf.shelf : "none";
+              return (
+                <Book
+                  image={book.imageLinks.thumbnail}
+                  bookTitle={book.title}
+                  bookAuthor={book.authors}
+                  key={book.id}
+                  updateShelf={updateShelf}
+                  id={book.id}
+                  shelf={shelf}
+                />
+              );
+            })}
+          </ol>
         </div>
       </div>
     </div>

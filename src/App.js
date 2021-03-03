@@ -9,6 +9,7 @@ import "./App.css";
 class BooksApp extends React.Component {
   state = {
     books: [],
+    search: [],
   };
 
   componentDidMount() {
@@ -23,6 +24,24 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf).then((resp) => {
       console.log(resp);
       window.location.reload();
+    });
+  };
+
+  searchBook = (query) => {
+    console.log(query);
+    BooksAPI.search(query).then((resp) => {
+      console.log(resp);
+      if (resp.error) {
+        this.setState((currState) => ({
+          ...currState,
+          search: [],
+        }));
+      } else {
+        this.setState((currState) => ({
+          ...currState,
+          search: resp,
+        }));
+      }
     });
   };
 
@@ -47,7 +66,21 @@ class BooksApp extends React.Component {
             )}
           />
 
-          <Route path="/search" render={() => <Search />} />
+          <Route
+            path="/search"
+            render={() => (
+              <Search
+                currentBooks={this.state.books}
+                searchedBooks={this.state.search}
+                searchBook={(query) => {
+                  this.searchBook(query);
+                }}
+                updateShelf={(book, shelf) => {
+                  this.updateBookShelf(book, shelf);
+                }}
+              />
+            )}
+          />
         </div>
       </div>
     );
