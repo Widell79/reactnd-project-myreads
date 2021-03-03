@@ -1,10 +1,11 @@
 import React from "react";
 
-const Book = ({ image, bookTitle, bookAuthor, updateShelf, id }) => {
+const Book = ({ image, bookTitle, bookAuthor, updateShelf, id, shelf }) => {
   const handleUpdate = (e) => {
     const value = e.target.value;
     updateShelf({ id }, value);
   };
+
   return (
     <li>
       <div className="book">
@@ -18,7 +19,7 @@ const Book = ({ image, bookTitle, bookAuthor, updateShelf, id }) => {
             }}
           />
           <div onChange={handleUpdate} className="book-shelf-changer">
-            <select defaultValue="move">
+            <select defaultValue={shelf}>
               <option value="move" disabled>
                 Move to...
               </option>
