@@ -15,7 +15,7 @@ const Book = ({ image, bookTitle, bookAuthor, updateShelf, id, shelf }) => {
             style={{
               width: 128,
               height: 188,
-              backgroundImage: `url(${image})`,
+              backgroundImage: image,
             }}
           />
           <div onChange={handleUpdate} className="book-shelf-changer">

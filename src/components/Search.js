@@ -38,9 +38,12 @@ const Search = ({ currentBooks, searchedBooks, searchBook, updateShelf }) => {
             {searchedBooks.map((book, key) => {
               const bookOnShelf = currentBooks.find(({ id }) => id === book.id);
               const shelf = bookOnShelf ? bookOnShelf.shelf : "none";
+              const background = `url(${
+                book.imageLinks ? book.imageLinks.thumbnail : "./bg.png"
+              })`;
               return (
                 <Book
-                  image={book.imageLinks.thumbnail}
+                  image={background}
                   bookTitle={book.title}
                   bookAuthor={book.authors}
                   key={book.id}

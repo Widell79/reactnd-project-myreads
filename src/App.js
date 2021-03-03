@@ -22,15 +22,12 @@ class BooksApp extends React.Component {
 
   updateBookShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((resp) => {
-      console.log(resp);
       window.location.reload();
     });
   };
 
   searchBook = (query) => {
-    console.log(query);
     BooksAPI.search(query).then((resp) => {
-      console.log(resp);
       if (resp.error) {
         this.setState((currState) => ({
           ...currState,

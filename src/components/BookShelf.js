@@ -22,17 +22,22 @@ const BookShelf = ({ books, updateShelf }) => {
                   .filter(function(book) {
                     return book.shelf === convertShelf[shelf];
                   })
-                  .map((book) => (
-                    <Book
-                      image={book.imageLinks.thumbnail}
-                      bookTitle={book.title}
-                      bookAuthor={book.authors}
-                      key={book.id}
-                      updateShelf={updateShelf}
-                      id={book.id}
-                      shelf={book.shelf}
-                    />
-                  ))}
+                  .map((book) => {
+                    const background = `url(${
+                      book.imageLinks ? book.imageLinks.thumbnail : "./bg.png"
+                    })`;
+                    return (
+                      <Book
+                        image={background}
+                        bookTitle={book.title}
+                        bookAuthor={book.authors}
+                        key={book.id}
+                        updateShelf={updateShelf}
+                        id={book.id}
+                        shelf={book.shelf}
+                      />
+                    );
+                  })}
               </ol>
             </div>
           </div>
