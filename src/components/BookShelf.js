@@ -3,68 +3,38 @@ import { Link } from "react-router-dom";
 import Book from "./Book";
 
 const BookShelf = ({ books, updateShelf }) => {
+  const bookShelfs = ["Currently Reading", "Want to Read", "Read"];
+  const convertShelf = {
+    "Currently Reading": "currentlyReading",
+    "Want to Read": "wantToRead",
+    Read: "read",
+  };
+
   return (
     <div className="bookshelf-books">
-      <div className="list-books-content">
-        <h2>Currently Reading</h2>
-        <ol className="books-grid">
-          {books
-            .filter(function(book) {
-              return book.shelf === "currentlyReading";
-            })
-            .map((book) => (
-              <Book
-                image={book.imageLinks}
-                bookTitle={book.title}
-                bookAuthor={book.authors}
-                key={book.id}
-                updateShelf={updateShelf}
-                id={book.id}
-                shelf={book.shelf}
-              />
-            ))}
-        </ol>
-      </div>
-      <div className="list-books-content">
-        <h2>Want to Read</h2>
-        <ol className="books-grid">
-          {books
-            .filter(function(book) {
-              return book.shelf === "wantToRead";
-            })
-            .map((book) => (
-              <Book
-                image={book.imageLinks}
-                bookTitle={book.title}
-                bookAuthor={book.authors}
-                key={book.id}
-                updateShelf={updateShelf}
-                id={book.id}
-                shelf={book.shelf}
-              />
-            ))}
-        </ol>
-      </div>
-      <div className="list-books-content">
-        <h2>Read</h2>
-        <ol className="books-grid">
-          {books
-            .filter(function(book) {
-              return book.shelf === "read";
-            })
-            .map((book) => (
-              <Book
-                image={book.imageLinks}
-                bookTitle={book.title}
-                bookAuthor={book.authors}
-                key={book.id}
-                updateShelf={updateShelf}
-                id={book.id}
-                shelf={book.shelf}
-              />
-            ))}
-        </ol>
-      </div>
+      {bookShelfs.map((shelf) => (
+        <div key={shelf} className="list-books-content">
+          <h2>{shelf}</h2>
+          <ol className="books-grid">
+            {books
+              .filter(function(book) {
+                return book.shelf === convertShelf[shelf];
+              })
+              .map((book) => (
+                <Book
+                  image={book.imageLinks}
+                  bookTitle={book.title}
+                  bookAuthor={book.authors}
+                  key={book.id}
+                  updateShelf={updateShelf}
+                  id={book.id}
+                  shelf={book.shelf}
+                />
+              ))}
+          </ol>
+        </div>
+      ))}
+
       <div className="open-search">
         <Link to="/search">
           <button>Add a book</button>
